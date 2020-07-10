@@ -1,6 +1,6 @@
 {
   "type": "postgres",
-  "host": "localhost",
+  "host": "encontre-seu-mentor-container",
   "port": 5432,
   "username": "postgres",
   "password": "docker",
