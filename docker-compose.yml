@@ -1,0 +1,40 @@
+version: "3"
+
+networks:
+    encontre-seu-mentor-network:
+        driver: "bridge"
+
+services:
+    postgres:
+        env_file: .env
+        container_name: encontre-seu-mentor-container
+        image: postgres
+        restart: always
+        environment:
+            - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_DB=${DB_NAME}
+        volumes:
+            - ./postgres-data:/data/db
+        networks:
+            - encontre-seu-mentor-network
+        ports:
+            - "5432:5432"
+
+    api:
+        container_name: encontre-seu-mentor-api-container
+        build: .
+        image: encontre-seu-mentor-api
+        restart: always
+        command: >
+            bash -c "yarn typeorm migration:run && yarn dev"
+        volumes:
+            - ./:/opt/api
+        networks:
+            - encontre-seu-mentor-network
+        ports:
+            - "3333:3333"
+        links:
+            - postgres
+        depends_on:
+            - postgres

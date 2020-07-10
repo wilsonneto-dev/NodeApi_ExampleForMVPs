@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "up": "docker-compose up",
+    "stop": "docker-compose stop"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
