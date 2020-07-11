@@ -10,6 +10,8 @@
 
 ### Detalhes de cada chamada e seus retornos
 
+---
+
 #### GET: Listagem / Busca
 
 **URL** : `/techs` <br />
@@ -19,7 +21,7 @@
 
 | Parametro | Obrigatoriedade | Passado por | Tipo | Descrição |
 |-----------|-----------------|-------------|------|-----------|
-| `search`  | Opcional        | URL / Query | `string` | O parametro servirá para buscar apenas techs que tenham este texto no nome |
+| `search`  | Opcional        | Query | `string` | O parametro servirá para buscar apenas techs que tenham este texto no nome |
 
 ##### Exemplo de Chamada (sem busca):
 
@@ -29,7 +31,7 @@ Chamada
   GET: /techs
 ```
 
-Retorno:
+:heavy_check_mark: Retorno:
 
 ```
 [
@@ -53,13 +55,13 @@ Retorno:
 Chamada:
 
 ```
-/techs?search=react
+GET: /techs?search=react
 ```
 
 Parâmetros passados: <br />
-`search` passado por Query / URL <br />
+`search` passado por Query <br />
 
-Retorno:
+:heavy_check_mark: Retorno:
 
 ```
 [
@@ -71,3 +73,87 @@ Retorno:
   }
 ]
 ```
+
+---
+#### POST: Cadastro
+
+**URL** : `/techs` <br />
+**Método HTTP** : `POST`  <br /> 
+**Precisa estar logado** : Não  <br />
+**Parametros** : <br />
+
+| Parametro | Obrigatoriedade | Passado por | Tipo | Descrição |
+|-----------|-----------------|-------------|------|-----------|
+| `name`    | Obrigatório     | POST | `string` | O nome da categoria sendo cadastrada |
+
+
+##### Exemplo de chamada para cadastro
+
+Chamada:
+
+```
+POST: /techs
+```
+
+Parâmetros passados `BODY / Json`: 
+```
+{
+  "name": "React Native"
+}
+```
+
+:heavy_check_mark: Retorno no sucesso:
+`201 - Created` - E no corpo retorna a entidade cadastrada
+```
+{
+  "name": "React Native",
+  "id": "ec535e01-92df-466b-acdc-eccf7af38c01",
+  "created_at": "2020-07-12T01:01:34.213Z",
+  "updated_at": "2020-07-12T01:01:34.213Z"
+}
+```
+
+:x: Retorno na falha:
+`409 - Conflict` - Quando a tecnologia que está sendo cadastrada já existe na base
+```
+{
+  "status": "error",
+  "message": "Tech já cadastrada"
+}
+```
+---
+
+#### POST: Delete
+
+**URL** : `/techs/:id` <br />
+**Método HTTP** : `DELETE`  <br /> 
+**Precisa estar logado** : Não  <br />
+**Parametros** : <br />
+
+| Parametro | Obrigatoriedade | Passado por | Tipo | Descrição |
+|-----------|-----------------|-------------|------|-----------|
+| `id`      | Obrigatório     | URL         | `uuid`/`string` | Id / uuid da tech a ser excluída |
+
+
+##### Exemplo de exclusão
+
+Chamada:
+
+```
+DELETE: /techs/ec535e01-92df-466b-acdc-eccf7af38c01
+```
+
+Parâmetros passados `URL`: 
+`id`
+
+:heavy_check_mark: Retorno no sucesso:
+`204 - No Content` - retorno sem corpo
+
+:x: Retorno na falha:
+`404 - Not Found` - Quando o id passado por rota não corresponde a um id de tecnologia na base
+```
+{
+  "error": "Tech não encontrada"
+}
+```
+
