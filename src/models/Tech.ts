@@ -5,10 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
-import UserType from "./enums/UserType";
 
-@Entity("users")
-class Project {
+@Entity("techs")
+class Tech {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -22,4 +21,4 @@ class Project {
   updated_at: Date;
 }
 
-export default Project;
+export default Tech;
