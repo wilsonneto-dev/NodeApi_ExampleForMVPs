@@ -31,7 +31,7 @@ techsRouter.post(
     const createTechService = new CreateTechService();
     const createdTech = await createTechService.execute({ name });
 
-    return response.json(createdTech);
+    return response.status(201).json(createdTech);
   }
 );
 
