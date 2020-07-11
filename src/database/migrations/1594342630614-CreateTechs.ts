@@ -21,10 +21,12 @@ export class CreateTechs1594342630614 implements MigrationInterface {
           {
             name: "created_at",
             type: "timestamp",
+            default: "now()",
           },
           {
             name: "updated_at",
             type: "timestamp",
+            default: "now()",
           },
         ],
       })
