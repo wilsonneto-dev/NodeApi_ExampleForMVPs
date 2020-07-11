@@ -3,9 +3,10 @@ import UserType, { UserTypeMigrationArray } from "../../models/enums/UserType";
 
 export class CreateUser1594334063036 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    new Table({
-      name: "users",
-      columns: [
+    await queryRunner.createTable(
+      new Table({
+        name: "users",
+        columns: [
         {
           name: "id",
           type: "uuid",
@@ -59,6 +60,7 @@ export class CreateUser1594334063036 implements MigrationInterface {
         {
           name: "email",
           type: "varchar",
+          isUnique: true
         },
         {
           name: "whatsapp",
@@ -74,14 +76,6 @@ export class CreateUser1594334063036 implements MigrationInterface {
         },
         {
           name: "created_at",
-          type: "boolean",
-        },
-        {
-          name: "available",
-          type: "boolean",
-        },
-        {
-          name: "created_at",
           type: "timestamp",
         },
         {
@@ -89,7 +83,8 @@ export class CreateUser1594334063036 implements MigrationInterface {
           type: "timestamp",
         },
       ],
-    });
+    })
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
