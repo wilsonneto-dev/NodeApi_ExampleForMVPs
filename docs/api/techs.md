@@ -1,4 +1,4 @@
-## /techs - Recnologias
+## /techs - Tecnologias
 
 | Verbo HTTP | Ação             | Descrição                                        | Código e Retorno           |
 | ---------- | ---------------- | ------------------------------------------------ | -------------------------- |
@@ -6,18 +6,20 @@
 | `POST`     | Cadastro         | Cadastra uma nova categoria                      | 201 Created: `Tech`        |
 | `DELETE`   | Deletar          | Deleta uma categoria cadastrada                  | 204 No Content             |
 
-### Detalhes de cada chamada e seus retornos
-
 ---
+
+### Detalhes de cada chamada e seus retornos
 
 #### GET: Listagem / Busca
 
-**URL** : `/techs`
-**Método HTTP** : `GET`  
-**Precisa estar logado** : Não
-**Parametros** :
+**URL** : `/techs` <br />
+**Método HTTP** : `GET`  <br /> 
+**Precisa estar logado** : Não  <br />
+**Parametros** : <br />
+
 | Parametro | Obrigatoriedade | Passado por | Tipo | Descrição |
-| `search` | Opcional | URL / Query | `string` | O parametro servirá para buscar apenas techs que tenham este texto no nome |
+|-----------|-----------------|-------------|------|-----------|
+| `search`  | Opcional        | URL / Query | `string` | O parametro servirá para buscar apenas techs que tenham este texto no nome |
 
 ##### Exemplo de Chamada (sem busca):
 
@@ -54,8 +56,8 @@ Chamada:
 /techs?search=react
 ```
 
-Parâmetros passados:
-`search` passado por Query / URL
+Parâmetros passados: <br />
+`search` passado por Query / URL <br />
 
 Retorno:
 
