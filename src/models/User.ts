@@ -8,7 +8,7 @@ import {
 import UserType from "./enums/UserType";
 
 @Entity("users")
-class Project {
+class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -65,4 +65,4 @@ class Project {
   updated_at: Date;
 }
 
-export default Project;
+export default User;
