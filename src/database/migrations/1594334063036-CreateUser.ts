@@ -23,7 +23,7 @@ export class CreateUser1594334063036 implements MigrationInterface {
             name: "type",
             type: "enum",
             enum: UserTypeMigrationArray,
-            /* default: UserTypeMigrationArray[0], */
+            default: `'${UserType.Mentor}'`,
           },
           {
             name: "area",
