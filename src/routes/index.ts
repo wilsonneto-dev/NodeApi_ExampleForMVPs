@@ -1,9 +1,14 @@
 import { Router } from "express";
+import techsRouter from "./techs.routes";
 
 const routes = Router();
 
-routes.use("/", (request, response) => {
-  return response.status(200).send("Hello!");
+routes.get("/", (request, response) => {
+  return response
+    .status(200)
+    .json({ message: "Hello, everything is ok here..." });
 });
+
+routes.use("/techs", techsRouter);
 
 export default routes;
